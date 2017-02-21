@@ -1,6 +1,6 @@
 
 <?php
-require 'Personnage.php';
+require 'classes/Personnage.php';
 
 
     $paladin = new Paladin('Paladin');
