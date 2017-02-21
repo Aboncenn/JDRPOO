@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Bootstrap 101 Template</title>
+    <title>JDR</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -19,8 +19,17 @@
 </head>
 <body>
 
+<h3>Commencer un partie :</h3> <button class="btn btn-primary" value="start">START</button>
+
+<hr>
+
+<strong> ZONE TEST VARIABLES / CLASSES <?php ?></strong>
+
 <?php
 require 'classes/Personnage.php';
+require_once 'classes/Start.php';
+require 'game.php';
+require 'classes/Start.php';
 
 
 $paladin = new Paladin('Paladin');
@@ -29,14 +38,13 @@ $magicien = new Magicien('Magicien');
 
 ?>
 
-<strong> ZONE TEST VARIABLES / CLASSES</strong>
 
 <p> Quel personnage veux tu choisir ?</p>
 <form method="post">
     <select name="personnage" id="personnage">
         <option value="paladin">  <?php echo $paladin->nom; ?> <br></option>
-        <option value="guerrier">  <?php  echo $guerrier->nom; ?> <br></option>
-        <option value="magicien">  <?php    echo  $magicien->nom;?> <br></option>
+        <option value="guerrier">  <?php echo $guerrier->nom; ?> <br></option>
+        <option value="magicien">  <?php echo $magicien->nom;?> <br></option>
     </select>
     <input type="submit" value="choisir mon personnage">
 
