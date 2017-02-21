@@ -11,6 +11,19 @@ class Personnage {
     public $magie = 10;
     public $def = 50;
 
+
+    protected function empecher_negatif(){
+        if ($this->vie <= 0) {
+            $this->vie = 0;
+        }
+    }
+
+    public function attaque($cible){
+        $cible->vie -= $this->atk;
+        $cible->empecher_negatif();
+
+    }
+
 }
 
 class Guerrier extends Personnage{
