@@ -19,9 +19,32 @@
 </head>
 <body>
 
-<hr>
+<?php
 
 
+require 'classes/Personnage.php';
+require 'classes/Monstre.php';
+require_once 'classes/Start.php';
+
+require 'classes/Start.php';
+
+$monstre = new Monstre();
+
+?>
+
+
+<p> Quel personnage veux tu choisir ?</p>
+<form method="post" action="choix.php">
+
+    <select name="personnage" id="personnage">
+        <option value="paladin">Paloufsamer <br></option>
+        <option value="guerrier">  Warsamer<br></option>
+        <option value="magicien"> Magosamer <br></option>
+    </select>
+    <input type="submit" value="choisir mon personnage">
+
+
+</form>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -29,6 +52,7 @@
 <script src="js/bootstrap.min.js"></script>
 </body>
 </html>
+
 
 
 
