@@ -31,7 +31,7 @@ class Paladin extends Personnage{
 
 }
 
-class Juif extends Personnage {
+class Paysan extends Personnage {
 
 
 }
