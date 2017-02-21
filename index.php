@@ -56,7 +56,6 @@ $monstre = new Monstre();
 
 
 ?>
-<strong> ZONE TEST VARIABLES / CLASSES </strong>
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

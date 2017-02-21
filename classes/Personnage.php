@@ -2,6 +2,7 @@
 <?php
 
 class Personnage {
+    const MAX_VIE = 100;
     public $nom;
     public function __construct($nom){
         $this->nom = $nom;
@@ -17,12 +18,28 @@ class Personnage {
             $this->vie = 0;
         }
     }
-
     public function attaque($cible){
         $cible->vie -= $this->atk;
         $cible->empecher_negatif();
 
     }
+
+
+    public function heal(){
+
+            $this->vie = $this->vie + 20;
+
+    }
+
+    public function mort(){
+        if ($this->vie = 0) {
+            echo "Naaaaaaon. Votre personnage est mort :'(";
+            header('Location: index.php');
+        }
+    }
+
+
+
 
 }
 
