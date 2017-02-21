@@ -19,11 +19,11 @@
 </head>
 <body>
 
-<h3>Commencer un partie :</h3> <button class="btn btn-primary" value="start">START</button>
+<h3>Commencer un partie :</h3> <input type="button" value="Start" class="btn btn-danger" onClick="document.location.href='game.php'" />
 
 <hr>
 
-<strong> ZONE TEST VARIABLES / CLASSES <?php ?></strong>
+<strong> ZONE TEST VARIABLES / CLASSES </strong>
 
 <?php
 require 'classes/Personnage.php';
