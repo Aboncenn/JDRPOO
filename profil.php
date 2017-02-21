@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>JDR</title>
+    <title>Fiche Personnage</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -19,32 +19,7 @@
 </head>
 <body>
 
-<?php
 
-
-require 'classes/Personnage.php';
-require 'classes/Monstre.php';
-require_once 'classes/Start.php';
-
-require 'classes/Start.php';
-
-$monstre = new Monstre();
-
-?>
-
-
-<p> Quel personnage veux tu choisir ?</p>
-<form method="post" action="choix.php">
-
-    <select name="personnage" id="personnage">
-        <option value="paladin">Paloufsamer <br></option>
-        <option value="guerrier">  Warsamer<br></option>
-        <option value="magicien"> Magosamer <br></option>
-    </select>
-    <input type="submit" value="choisir mon personnage">
-
-
-</form>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -52,6 +27,8 @@ $monstre = new Monstre();
 </body>
 </html>
 
+<?php
 
 
 
+?>
