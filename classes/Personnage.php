@@ -16,18 +16,21 @@ class Personnage {
 class Guerrier extends Personnage{
     public $atk = 100;
     public $magie = 0;
+    public $name = 'Gurdil';
 
 
 }
 
 class Magicien extends Personnage{
     public $magie = 60;
+    public $name = 'Gandoulf';
 
 }
 
 class Paladin extends Personnage{
     public $atk = 50;
     public $magie = 40;
+    public $nom = 'Jean-Palouf';
 
 }
 

@@ -19,42 +19,9 @@
 </head>
 <body>
 
-<h3>Commencer un partie :</h3> <input type="button" value="Start" class="btn btn-danger" onClick="document.location.href='game.php'" />
-
 <hr>
 
-<strong> ZONE TEST VARIABLES / CLASSES </strong>
 
-<?php
-require 'classes/Personnage.php';
-require_once 'classes/Start.php';
-require 'game.php';
-require 'classes/Start.php';
-
-
-$paladin = new Paladin('Paladin');
-$guerrier = new Guerrier('Guerrier');
-$magicien = new Magicien('Magicien');
-
-?>
-
-
-<p> Quel personnage veux tu choisir ?</p>
-<form method="post">
-    <select name="personnage" id="personnage">
-        <option value="paladin">  <?php echo $paladin->nom; ?> <br></option>
-        <option value="guerrier">  <?php echo $guerrier->nom; ?> <br></option>
-        <option value="magicien">  <?php echo $magicien->nom;?> <br></option>
-    </select>
-    <input type="submit" value="choisir mon personnage">
-
-
-</form>
-
-<?php
-var_dump($guerrier, $magicien, $paladin);
-
-?>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
