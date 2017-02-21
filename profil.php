@@ -18,7 +18,12 @@
     <![endif]-->
 </head>
 <body>
+<?php require 'classes/Personnage.php'; ?>
+<?php require 'classes/Objets.php'; ?>
 
+<p><h1>Fiche personnage</h1> : <?php echo $personnage->nom;?></p>
+
+<h4></h4>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
