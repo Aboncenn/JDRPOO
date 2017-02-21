@@ -15,6 +15,7 @@ class Personnage {
 
 class Guerrier extends Personnage{
     public $atk = 100;
+    public $magie = 0;
 
 
 }
@@ -27,6 +28,11 @@ class Magicien extends Personnage{
 class Paladin extends Personnage{
     public $atk = 50;
     public $magie = 40;
+
+}
+
+class Juif extends Personnage {
+
 
 }
 
