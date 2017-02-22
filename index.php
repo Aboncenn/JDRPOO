@@ -30,9 +30,6 @@ require_once 'classes/Jeu.php';
 require_once 'classes/Monstre.php';
 
 
-
-
-
 ?>
 
 <p> Quel personnage veux tu choisir ?</p>

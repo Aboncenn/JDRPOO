@@ -6,11 +6,12 @@
 
 session_start();
 
-require_once 'classes/Jeu.php';
 require_once 'classes/Personnage.php';
+require_once 'classes/Jeu.php';
 require_once  'classes/Monstre.php';
 
-$_SESSION['personnage'] = $perso;
+
+$_SESSION['personnage'];
 
 
-var_dump($perso);
+

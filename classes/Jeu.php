@@ -1,36 +1,26 @@
 <?php
 
 
-class Jeu {
+class Jeu{
 
-
+    public $personnage;
     public function creation($perso){
 
 
 
         if($perso == "paladin"){
-            $perso  = new Paladin('Paladin');
+          $this->personnage =  new Paladin('Paladin');
 
         }
-
-
-
-
         elseif($perso  == "guerrier"){
-            $perso  = new Guerrier('Guerrier');
+            $this->personnage =  new Guerrier('Guerrier');
 
 
         }
         elseif($perso == "magicien"){
-            $perso  = new Magicien('Magicien');
-
+            $this->personnage =   new Magicien('Magicien');
 
         }
 
-
-
     }
-
-
-
 }
