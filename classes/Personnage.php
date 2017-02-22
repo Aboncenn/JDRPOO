@@ -12,7 +12,7 @@ class Personnage {
     public $vitesse = 150;
     public $magie = 10;
     public $def = 50;
-
+    public $critique =0;
 
     protected function empecher_negatif(){
         if ($this->vie <= 0) {
@@ -24,7 +24,14 @@ class Personnage {
         $cible->empecher_negatif();
 
     }
-
+    public function critique($atk){
+    $stat=rand(1,100);
+        if($stat < 5){
+            $critique= $atk*1.5;
+        }else{
+            $critique=0;
+        }
+    }
 
     public function heal(){
 
@@ -40,8 +47,8 @@ class Personnage {
     }
 
 
-}
 
+}
 class Guerrier extends Personnage{
     public $atk = 100;
     public $vitesse = 30;
@@ -63,8 +70,3 @@ class Paladin extends Personnage{
 
 
 }
-
-
-
-
-

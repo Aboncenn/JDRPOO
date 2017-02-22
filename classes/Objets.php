@@ -2,6 +2,7 @@
 
 class Arme {
 
+
     public $puissance = 2;
     public $puissanceM = 5;
 
@@ -36,4 +37,7 @@ class Potion{
     }
 
 }
+
+
+?>
 

@@ -18,7 +18,38 @@
     <![endif]-->
 </head>
 <body>
+<?php
 
+require 'classes/Personnage.php';
+require 'classes/Monstre.php';
+require_once 'classes/Start.php';
+require_once 'choix.php';
+
+?>
+
+<h1>Fiche personnage : </h1>
+
+<h5></h5>
+
+<div class="stats col-md-4">
+
+
+
+</div>
+
+<div class="inventaire col-md-8">
+    <div class="objets">
+
+    </div>
+    <div class="popo">
+
+    </div>
+    <div class="autre">
+
+    </div>
+
+
+</div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
