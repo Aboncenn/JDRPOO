@@ -21,6 +21,7 @@
 
 <div class="stats col-md-4">
 
+
 </div>
 
 <div class="inventaire col-md-8">
