@@ -9,6 +9,7 @@ class Personnage {
     }
     public $vie = 100;
     public $atk = 10;
+    public $vitesse = 150;
     public $magie = 10;
     public $def = 50;
     public $critique =0;
@@ -58,33 +59,31 @@ class Personnage {
             header('Location: index.php');
         }
     }
+
+
+
 }
 
     /* DES PNJ UN PEUX POURRIS */
 
 class Guerrier extends Personnage{
     public $atk = 100;
+    public $vitesse = 30;
     public $magie = 0;
-    public $name = 'Gurdil';
-
 
 }
 
 class Magicien extends Personnage{
     public $magie = 60;
-    public $name = 'Gandoulf';
+    public $vitesse = 50;
+
 
 }
 
 class Paladin extends Personnage{
     public $atk = 50;
     public $magie = 40;
-    public $nom = 'Jean-Palouf';
-
-}
-
-class Paysan extends Personnage {
+    public $vitesse = 45;
 
 
 }
-

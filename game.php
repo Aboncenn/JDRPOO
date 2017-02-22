@@ -22,7 +22,20 @@
 
 <button type="button" value="" class="btn btn-danger" onClick="window.open('profil.php')">Fiche personnage</button>
 
+
+
 <?php
+
+
+session_start();
+
+require_once 'classes/Personnage.php';
+require_once 'classes/Jeu.php';
+require_once  'classes/Monstre.php';
+
+
+$_SESSION['personnage'];
+
 
 
 require 'classes/Personnage.php';
@@ -34,7 +47,6 @@ require_once 'choix.php';
 <?php
 echo "ouesh";
 
-
 ?>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -43,9 +55,3 @@ echo "ouesh";
 <script src="js/bootstrap.min.js"></script>
 </body>
 </html>
-
-<?php
-
-
-
-?>
