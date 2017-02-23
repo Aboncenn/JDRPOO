@@ -13,7 +13,7 @@ class Jeu{
 
         }
         elseif($perso  == "guerrier"){
-            $this->personnage =  new Guerrier('Guerrier');
+                $this->personnage =  new Guerrier('Guerrier');
 
 
         }
