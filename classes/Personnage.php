@@ -1,4 +1,3 @@
-
 <?php
 
 class Personnage {
@@ -18,11 +17,7 @@ class Personnage {
             $this->vie = 0;
         }
     }
-    public function attaque($cible){
-        $cible->vie -= $this->atk;
-        $cible->empecher_negatif();
 
-    }
     public function critique($atk){
     $stat=rand(1,100);
         if($stat < 5){
@@ -32,6 +27,11 @@ class Personnage {
         }
     }
 
+    public function attaque($cible,$critique){
+        $cible->vie -= $this->atk+ $critique;
+        $cible->empecher_negatif();
+
+    }
     public function heal(){
 
             $this->vie = $this->vie + 20;
