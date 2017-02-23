@@ -12,6 +12,7 @@ Class Salle
     {
         $this->x = $x;
         $this->y = $y;
+        $this->neighbors = [];
     }
 
     public function initDonjon($x, $y)
@@ -27,43 +28,36 @@ Class Salle
         $vide = array_rand($Tab_salle, 1);
         array_push($Empty, $vide);
     }
-    /*    public function Porte($m,$n){
+        public function Porte($m,$n)
+        {
             $this->porte = 0;
-            for ($i = 1; $i <= ($n+$m); $i++) {
-                if (self::Tab_salle < 0){
-                    $this->porte = 0;
-                }else{
-                    $porte=2;
-                }
-
-            }
-            if (($m -1 || $n-1) && ( $m > 0 || $n >0) ){
-                $porte=3;
-            }else{
-                $porte=2;
-            }
-        }
-
-
-            for($i = 1; $i <= self::m;$i++) {
-                for($j = 1; $j <= self::n;$j++) {
-                    for ($i = 1; $i <= ($n+$m); $i++) {
-                        if (self::Tab_salle['S1']['x'] < 0){
+            for ($i = 1; $i <= self::$m; $i++) {
+                for ($j = 1; $j <= self::$n; $j++) {
+                    for ($i = 1; $i <= ($n + $m); $i++) {
+                        if (self::$Tab_salle < 0) {
                             $this->porte = 0;
-                            $this->neighbors.array_push($Tab_salle);
-                        }else{
-                            $porte=2;
+                            array_push($this->neighbors,$Tab_salle);
+                            if(self::$Tab_salle->x > 1  ){
+                                $this->porte = 3;
+                                array_push($this->neighbors,$Tab_salle);
+                                if(self::$Tab_salle->y > 1  ){
+                                    $this->porte =3;
+                                    array_push($this->neighbors,$Tab_salle);
+                                    if($this->neighbors = 1  ){
+                                        $this->porte =3;
+                                        array_push($this->neighbors,$Tab_salle);
+                                    }
+                                }
+                            }
+                        }
+                        else {
+                            $this->porte = 4;
                         }
 
-            }
-                    if (($m -1 || $n-1) && ( $m > 0 || $n >0) ){
-                        $porte=3;
-                    }else{
-                        $porte=2;
                     }
                 }
             }
         }
-    */
+
 }
 ?>

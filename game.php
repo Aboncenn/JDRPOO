@@ -1,3 +1,17 @@
+<?php
+require_once 'classes/Personnage.php';
+require_once 'classes/Jeu.php';
+require_once  'classes/Monstre.php';
+require 'config.php';
+
+$perso = isset($_POST['perso'])?$_POST['perso']:'';
+
+$Jeu = new Jeu();
+$Jeu->creation($perso);
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -24,27 +38,7 @@
 
 
 
-<?php
 
-require_once 'classes/Personnage.php';
-require_once 'classes/Jeu.php';
-require_once  'classes/Monstre.php';
-require_once 'config.php';
-
-
-$perso = isset($_POST['perso'])?$_POST['perso']:'';
-
-$Jeu = new Jeu();
-$Jeu->creation($perso);
-
-
-$_SESSION['personnage'] = $Jeu->personnage;
-
-
-var_dump($_SESSION);
-
-
-?>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
