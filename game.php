@@ -1,3 +1,12 @@
+<?php
+
+require_once 'classes/Personnage.php';
+require_once 'classes/Jeu.php';
+require_once  'classes/Monstre.php';
+require_once 'classes/Objets.php';
+require_once 'config.php';
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -23,13 +32,7 @@
 <button type="button" value="" class="btn btn-danger" onClick="window.open('profil.php')">Fiche personnage</button>
 
 
-
 <?php
-
-require_once 'classes/Personnage.php';
-require_once 'classes/Jeu.php';
-require_once  'classes/Monstre.php';
-require_once 'config.php';
 
 
 $perso = isset($_POST['perso'])?$_POST['perso']:'';
@@ -37,11 +40,13 @@ $perso = isset($_POST['perso'])?$_POST['perso']:'';
 $Jeu = new Jeu();
 $Jeu->creation($perso);
 
+$coffre1 = new Coffre();
+var_dump($coffre);
 
-$_SESSION['personnage'] = $Jeu->personnage;
-
+$coffre1->ouvrir($coffre);
 
 var_dump($_SESSION);
+var_dump($coffre1->coffre);
 
 
 ?>

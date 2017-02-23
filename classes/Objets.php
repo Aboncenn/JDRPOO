@@ -38,6 +38,17 @@ class Potion{
 
 }
 
+class Coffre
+{
 
-?>
+    public $coffre = array('potion', 'rail de cocaine', "épée", "sceptre");
+
+    public function ouvrir($coffre)
+    {
+
+        $this->coffre = array_rand($coffre, 1);
+    }
+}
+
+
 
