@@ -21,7 +21,6 @@
 <body>
 
 <?php
-session_start();
 
 
 
@@ -30,6 +29,7 @@ session_start();
 require_once 'classes/Personnage.php';
 require_once 'classes/Jeu.php';
 require_once 'classes/Monstre.php';
+require_once 'config.php';
 
 ?>
 

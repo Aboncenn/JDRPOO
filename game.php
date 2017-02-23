@@ -26,26 +26,23 @@
 
 <?php
 
-
-session_start();
-
 require_once 'classes/Personnage.php';
 require_once 'classes/Jeu.php';
 require_once  'classes/Monstre.php';
+require_once 'config.php';
 
 
-$_SESSION['personnage'];
+$perso = isset($_POST['perso'])?$_POST['perso']:'';
+
+$Jeu = new Jeu();
+$Jeu->creation($perso);
 
 
+$_SESSION['personnage'] = $Jeu->personnage;
 
-require 'classes/Personnage.php';
-require 'classes/Monstre.php';
-require_once 'classes/Start.php';
-require_once 'choix.php';
-?>
 
-<?php
-echo "ouesh";
+var_dump($_SESSION);
+
 
 ?>
 
@@ -55,3 +52,4 @@ echo "ouesh";
 <script src="js/bootstrap.min.js"></script>
 </body>
 </html>
+
