@@ -21,7 +21,6 @@ class Personnage {
 
     /* FONCTIONS D'ACTION */
 
-
     public function critique($atk){
     $stat=rand(1,100);
         if($stat <= 5){
@@ -84,6 +83,4 @@ class Paladin extends Personnage{
     public $atk = 50;
     public $magie = 40;
     public $vitesse = 45;
-
-
 }

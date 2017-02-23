@@ -1,3 +1,11 @@
+<?php
+
+require_once 'classes/Personnage.php';
+require_once 'classes/Jeu.php';
+require_once 'classes/Monstre.php';
+require 'config.php';
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -19,19 +27,6 @@
     <![endif]-->
 </head>
 <body>
-
-<?php
-
-
-
-
-require_once 'classes/Personnage.php';
-require_once 'classes/Jeu.php';
-require_once 'classes/Monstre.php';
-require_once 'config.php';
-
-
-?>
 
 <p> Quel personnage veux tu choisir ?</p>
 <form method="post" action="choix.php">
