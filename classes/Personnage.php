@@ -1,4 +1,3 @@
-
 <?php
 
 class Personnage {
@@ -19,29 +18,48 @@ class Personnage {
             $this->vie = 0;
         }
     }
-    public function attaque($cible){
+
+    /* FONCTIONS D'ACTION */
+
+    public function attaque($cible)
+    {
         $cible->vie -= $this->atk;
         $cible->empecher_negatif();
-
     }
     public function critique($atk){
     $stat=rand(1,100);
-        if($stat < 5){
+        if($stat <= 5){
             $critique= $atk*1.5;
         }else{
             $critique=0;
         }
     }
 
+    public function attaque($cible,$critique){
+        $cible->vie -= $this->atk+ $critique;
+        $cible->empecher_negatif();
+
+    }
+    public function miss($atk){
+        $stat=rand(1,100);
+            if($stat <= 8){
+                $miss=$atk == 0;
+            }else{
+                $miss=0;
+            }
+    }
+
     public function heal(){
 
-            $this->vie = $this->vie + 20;
+        $this->vie = $this->vie + 20;
 
     }
 
+    /* FIN FONCTIONS D'ACTION */
+
     public function mort(){
         if ($this->vie = 0) {
-            echo "Naaaaaaon. Votre personnage est mort :'(";
+            echo "Naaaaaan. Votre personnage est mort :'(";
             header('Location: index.php');
         }
     }
@@ -49,6 +67,9 @@ class Personnage {
 
 
 }
+
+    /* DES PNJ UN PEUX POURRIS */
+
 class Guerrier extends Personnage{
     public $atk = 100;
     public $vitesse = 30;

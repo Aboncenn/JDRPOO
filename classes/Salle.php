@@ -1,28 +1,61 @@
 <?php
-$y = range(1, 9);
-$x = range(1, 9);
-$Y = range(-1, 1);
-$X = range(-1, 1);
-$valeurs = array_fill(1, 9, 0);
-function array_random($valeurs, $num = 1) {
-    shuffle($valeurs);
-    $r = array();
-    for ($i = 0; $i < $num; $i++) {
-        $r[] = $valeurs[$i];
-    }
-    return $num == 1 ? $r[0] : $r;
-}
-function array_go($valeurs, $num = 1) {
-    $rand= rand(-1,1);
-    shuffle($valeurs);
-    $r = array();
-    for ($i = 0; $i < $num; $i++) {
-        $r[] = $valeurs[$i];
-    }
-    return $num == 1 ? $r[0] : $r + $rand;
-}
 
-print_r(array_go($X));
-print_r(array_random($x));
-print_r(array_random($y));
+Class Salle {
+    public $Empty=[];
+    public $porte=1;
+    public static $m =3;
+    public static $n =3;
+    public static $Tab_salle=[];
+
+    public function __construct($x, $y, $name){
+        //$this->nom = $nom;
+    }
+    public function initDonjon() {
+        for($i = 1; $i <= self::$m;$i++) {
+            for($j = 1; $j <= self::$n;$j++) {
+                self::$Tab_salle.array_push(new Salle($i,$j));
+            }
+        }
+    public function SelecEmpty($Tab_salle,&$Empty){
+        $vide=array_rand($Tab_salle, 1);
+        array_push($Empty, $vide);
+    }
+    public function Porte($m,$n){
+        $this->porte = 0;
+        for ($i = 1; $i <= ($n+$m); $i++) {
+            if (self::Tab_salle['S1']['x'] < 0){
+                $this->porte = 0;
+            }else{
+                $porte=2;
+            }
+
+        }
+        if (($m -1 || $n-1) && ( $m > 0 || $n >0) ){
+            $porte=3;
+        }else{
+            $porte=2;
+        }
+    }
+
+
+        for($i = 1; $i <= self::m;$i++) {
+            for($j = 1; $j <= self::n;$j++) {
+                for ($i = 1; $i <= ($n+$m); $i++) {
+                    if (self::Tab_salle['S1']['x'] < 0){
+                        $this->porte = 0;
+                        $this->neighbors.array_push($Tab_salle);
+                    }else{
+                        $porte=2;
+                    }
+
+        }
+                if (($m -1 || $n-1) && ( $m > 0 || $n >0) ){
+                    $porte=3;
+                }else{
+                    $porte=2;
+                }
+            }
+        }
+    }
+}
 ?>
