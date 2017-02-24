@@ -11,7 +11,6 @@ $choix = $_POST['attaquer'];
 $Jeu = $_SESSION['jeu'];
 $lastperso = $Jeu->personnage;
 $monstre = $_SESSION['salle']->nombreMonstres;
-var_dump($perso);
 if($choix == 'attaquer') {
 
     $lastperso->attaque($monstre);

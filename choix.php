@@ -1,6 +1,4 @@
 <?php
-
-
 require_once 'classes/Personnage.php';
 require_once 'classes/Jeu.php';
 require 'config.php';
@@ -11,7 +9,6 @@ $Jeu = new Jeu();
 $Jeu->creation($perso);
 
 $_SESSION['jeu'] = $Jeu;
-var_dump($Jeu->personnage->nom);
 ?>
 
 

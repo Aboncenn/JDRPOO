@@ -37,7 +37,6 @@ if(isset($_GET['neighbor']) && $_GET['neighbor'] < count ($salle->neighbors)) {
     else{ $direction = null; };
     $salle = $newsalle;
 }
-var_dump($perso);
 $_SESSION['salle']= $salle;
 ?>
 <!DOCTYPE html>
@@ -73,10 +72,12 @@ foreach ($salle->neighbors as $key => $neighbor) {
 }
 ?>
 <br>
-    <?php
-    for ($i = 1; $i <= count($salle->coffres); $i++) {
-        echo '<button href="#" type="button" class="btn btn-info">Ouvrir coffre ' . $i . '</button>';
-    }
+<?php
+for ($i = 1; $i <= count($salle->coffres); $i++) {
+    ?>
+    <button onClick="window.open('ajoutObjet.php')" type="button" class="btn btn-info">Ouvrir coffre</button>
+<?php
+}
 ?>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

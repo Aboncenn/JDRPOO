@@ -33,8 +33,6 @@ session_destroy();
         <option value="magicien"> Magosamer <br></option>
     </select>
     <input type="submit" value="choisir mon personnage">
-
-
 </form>
 
 
