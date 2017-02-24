@@ -9,6 +9,7 @@ require 'config.php';
 
 $perso = isset($_POST['perso'])?$_POST['perso']:'';
 
+
 $Jeu = new Jeu();
 $Jeu->creation($perso);
 $x = 0;
@@ -17,11 +18,6 @@ $salle = new Salle($x,$y);
 $salle->initDonjon($x, $y);
 $_SESSION['salle'] = $salle;
 var_dump($_SESSION);
-$coffre1 = new Coffre();
-$coffre1->coffre9;
-$coffre1->ouvrir($coffre9);
-
-var_dump($coffre1);
 
 ?>
 
@@ -45,26 +41,8 @@ var_dump($coffre1);
 
 <button type="button" value="" class="btn btn-danger" onClick="window.open('profil.php')">Fiche personnage</button>
 
+
 <?php
-
-
-$perso = isset($_POST['perso'])?$_POST['perso']:'';
-$x = 0;
-$y = 0;
-$salle = new Salle($x,$y);
-$salle->initDonjon($x, $y);
-$_SESSION['salle'] = $salle;
-
-$Jeu = new Jeu();
-$Jeu->creation($perso);
-
-$coffre1 = new Coffre();
-$coffre1->ouvrir($coffre);
-
-var_dump($_SESSION);
-var_dump($coffre1->coffre);
-
-
 // Boucle FOR Portes
 
 for ($i = 1; ; $i++) {
@@ -74,18 +52,19 @@ for ($i = 1; ; $i++) {
     echo '<button href="#" type="button" class="btn btn-info">Ouvrir porte ' . $i . '</button>';
 }
 
-// Boucle FOR Coffres
-
-for ($i = 1; ; $i++) {
-    if ($i > $salle->coffre) {
-        break;
-    }
-    echo '<button href="#" type="button" class="btn btn-info">Ouvrir porte ' . $i . '</button>';
-}
-
-
 ?>
 
+<p>Gros loot sa mere</p>
+
+// Boucle FOR Coffres
+    <?php
+    for ($i = 1; ; $i++) {
+        if ($i > $objet->coffre) {
+            break;
+        }
+        echo '<button href="#" type="button" class="btn btn-info">Ouvrir coffre ' . $i . '</button>';
+    }
+    ?>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -93,4 +72,3 @@ for ($i = 1; ; $i++) {
 <script src="js/bootstrap.min.js"></script>
 </body>
 </html>
-
