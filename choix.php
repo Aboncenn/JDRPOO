@@ -11,7 +11,7 @@ $Jeu = new Jeu();
 $Jeu->creation($perso);
 
 $_SESSION['jeu'] = $Jeu;
-
+var_dump($Jeu->personnage->nom);
 ?>
 
 

@@ -86,15 +86,15 @@ Class Salle
         }
     }
     public function Coffre(){
-        $nombrecoffre = rand(0,3);
-        for ($i = 0;$i < $nombrecoffre; $i++){
+        $nombrecoffre = rand(1,2);
+        for ($i = 1;$i < $nombrecoffre; $i++){
             array_push($this->coffres, new Coffre());
         }
     }
 
     public function nombreMonstre(){
-        $nombredemonstre = rand(0,2);
-        for ($i = 0;$i < $nombredemonstre; $i++){
+        $nombredemonstre = rand(1,2);
+        for ($i = 1;$i < $nombredemonstre; $i++){
             array_push($this->nombreMonstres, new Monstre());
         }
     }

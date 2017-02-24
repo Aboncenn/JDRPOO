@@ -9,24 +9,19 @@ require 'config.php';
 $salle=0;
 $direction=null;
 $perso = isset($_POST['perso'])?$_POST['perso']:'';
-$Jeu = new Jeu();
-$Jeu->creation($perso);
-$Jeu = $_SESSION['jeu'];
 if(!isset($_SESSION['salle'])) {
     Salle::initDonjon();
     Salle::SelecEmpty();
     Salle::Porte();
     $salle = Salle::$Tab_salle[1][1];
     $_SESSION['salles'] = serialize(Salle::$Tab_salle);
-    $direction = null;
-
+    $salle->nombreMonstres = 0;
 }
 else {
     $salle = $_SESSION['salle'];
     $salles = $_SESSION['salles'];
     $salle->nombreMonstre();
     $salle->Coffre();
-    var_dump($salle->coffres);
 }
 if(isset($_GET['neighbor']) && $_GET['neighbor'] < count ($salle->neighbors)) {
     $newsalle = $salle->neighbors[$_GET['neighbor']];
@@ -42,8 +37,8 @@ if(isset($_GET['neighbor']) && $_GET['neighbor'] < count ($salle->neighbors)) {
     else{ $direction = null; };
     $salle = $newsalle;
 }
+var_dump($perso);
 $_SESSION['salle']= $salle;
-$_SESSION['jeu'] = $Jeu;
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -62,28 +57,26 @@ $_SESSION['jeu'] = $Jeu;
 </head>
 <body>
 <button type="button" value="" class="btn btn-danger" onClick="window.open('profil.php')">Fiche personnage</button>
-<?php
-//boucle monstre
+<br>
+    <p> Devant vous, vous avez <?php echo count($salle->nombreMonstres); ?> Monstres !</p>
 
-?>
-<form method="post" action="combat.php">
-    <input type="radio" name="attaquer" value="attaquer"> attaquer le monstre (reçevoir les dégats également)<br>
-    <input type="radio" name="vehicle" value="Car" > On verra après<br>
-    <input class="btn btn-danger" type="submit" value="Valider son choix">
-</form>
-
+    <form method="post" onClick="window.open('combat.php')">
+        <input type="radio" name="attaquer" value="attaquer"> attaquer le monstre (reçevoir les dégats également)<br>
+        <input type="radio" name="vehicle" value="Car"> On verra après<br>
+        <input class="btn btn-danger" type="submit" value="Valider son choix">
+    </form>
+    <br>
 <?php
 // Boucle FOR Portes
-    foreach ($salle->neighbors as $key => $neighbor) {
-        echo '<a href="game.php?neighbor='.$key.'" class="btn btn-info">Ouvrir porte '. $direction .'</a>';
-    }
+foreach ($salle->neighbors as $key => $neighbor) {
+    echo '<a href="game.php?neighbor=' . $key . '" class="btn btn-info">Ouvrir porte ' . $direction . '</a>';
+}
 ?>
 <br>
-<?php
-for ($i = 1; $i <= count($salle->coffres); $i++) {
-    echo '<button href="#" type="button" class="btn btn-info">Ouvrir coffre ' . $i . '</button>';
-}
-
+    <?php
+    for ($i = 1; $i <= count($salle->coffres); $i++) {
+        echo '<button href="#" type="button" class="btn btn-info">Ouvrir coffre ' . $i . '</button>';
+    }
 ?>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
