@@ -7,10 +7,6 @@ Class Salle
     public static $n = 3;
     public static $Tab_salle = [];
 
-    public $x;
-    public $y;
-    public $neighbors;
-
     private function __construct($x, $y)
    {
         $this->x = $x;
