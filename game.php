@@ -11,13 +11,17 @@ $perso = isset($_POST['perso'])?$_POST['perso']:'';
 
 $Jeu = new Jeu();
 $Jeu->creation($perso);
-
 $x = 0;
 $y = 0;
 $salle = new Salle($x,$y);
 $salle->initDonjon($x, $y);
 $_SESSION['salle'] = $salle;
 var_dump($_SESSION);
+$coffre1 = new Coffre();
+$coffre1->coffre9;
+$coffre1->ouvrir($coffre9);
+
+var_dump($coffre1);
 
 ?>
 
@@ -41,6 +45,37 @@ var_dump($_SESSION);
 
 <button type="button" value="" class="btn btn-danger" onClick="window.open('profil.php')">Fiche personnage</button>
 
+<?php
+
+
+$perso = isset($_POST['perso'])?$_POST['perso']:'';
+$x = 0;
+$y = 0;
+$salle = new Salle($x,$y);
+$salle->initDonjon($x, $y);
+$_SESSION['salle'] = $salle;
+
+$Jeu = new Jeu();
+$Jeu->creation($perso);
+
+$coffre1 = new Coffre();
+$coffre1->ouvrir($coffre);
+
+var_dump($_SESSION);
+var_dump($coffre1->coffre);
+
+
+// Boucle FOR
+
+for ($i = 1; ; $i++) {
+    if ($i > $salle->porte) {
+        break;
+    }
+    echo '<button href="#" type="button" class="btn btn-info">Ouvrir porte ' . $i . '</button>';
+}
+
+
+?>
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
