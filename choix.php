@@ -3,14 +3,15 @@
 
 require_once 'classes/Personnage.php';
 require_once 'classes/Jeu.php';
-require_once 'config.php';
+require 'config.php';
 
 
 $perso = isset($_POST['perso'])?$_POST['perso']:'';
 $Jeu = new Jeu();
 $Jeu->creation($perso);
 
-$_SESSION['personnage'] = $Jeu->personnage;
+$_SESSION['jeu'] = $Jeu;
+
 
 var_dump($_SESSION);
 

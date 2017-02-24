@@ -3,9 +3,6 @@
 class Personnage {
     const MAX_VIE = 100;
     public $nom;
-    public function __construct($nom){
-        $this->nom = $nom;
-    }
     public $vie = 100;
     public $atk = 10;
     public $vitesse = 150;
@@ -13,11 +10,7 @@ class Personnage {
     public $def = 50;
     public $critique =0;
 
-    protected function empecher_negatif(){
-        if ($this->vie <= 0) {
-            $this->vie = 0;
-        }
-    }
+
 
     /* FONCTIONS D'ACTION */
 
@@ -30,11 +23,11 @@ class Personnage {
         }
     }
 
-    public function attaque($cible,$critique){
-        $cible->vie -= $this->atk+ $critique;
-        $cible->empecher_negatif();
+    public function attaque($cible){
+        $cible->vie -= $this->atk;
 
     }
+
     public function miss($atk){
         $stat=rand(1,100);
             if($stat <= 8){
@@ -59,16 +52,52 @@ class Personnage {
         }
     }
 
+    public function getVie()
+    {
+        return $this->vie;
+    }
 
+    /**
+     * @return mixed
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAtk()
+    {
+        return $this->atk;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDef()
+    {
+        return $this->def;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSpeed()
+    {
+        return $this->speed;
+    }
 
 }
 
     /* DES PNJ UN PEUX POURRIS */
 
 class Guerrier extends Personnage{
-    public $atk = 100;
+    public $atk = 10;
     public $vitesse = 30;
     public $magie = 0;
+
 
 }
 
@@ -84,3 +113,6 @@ class Paladin extends Personnage{
     public $magie = 40;
     public $vitesse = 45;
 }
+
+
+/* GETTER ET SETTER */
