@@ -8,25 +8,25 @@ class Personnage {
     public $vitesse = 150;
     public $magie = 10;
     public $def = 50;
-    public $critique =0;
 
 
 
     /* FONCTIONS D'ACTION */
 
-    public function critique($atk){
-    $stat=rand(1,100);
-        if($stat <= 5){
-            $critique= $atk*1.5;
-        }else{
-            $critique=0;
-        }
-    }
 
     public function attaque($cible){
+        $stat=rand(1,100);
+        if ($stat <= 5){
+            $degats = $this->atk - $cible->def * 1.5;
+        } else{
+            $degats = $this->atk - $cible->def;
+        }
+
         $cible->vie -= $this->atk;
 
-    }
+        $cible->vie -= $degats;}
+
+
 
     public function miss($atk){
         $stat=rand(1,100);

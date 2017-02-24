@@ -40,11 +40,18 @@ class Potion{
 
 class Coffre
 {
-    public $coffre9 = array('potion', 'rail de cocaine', "épée", "sceptre");
+    public static $listeobjetspossibles = array('potion', 'rail de cocaine', 'épée', 'sceptre');
 
-    public function ouvrir($coffre9)
+    public function ouvrir()
     {
-        $this->coffre9 = array_rand($coffre9, 1);
+        $nomobjet = array_rand(self::$listeobjetspossibles, 1);
+
+        switch($nomobjet) {
+            case 'potion': return new Potion();
+            case 'rail de cocaine': return new RaildeCoc();
+            case 'épée': return new Epee();
+            case 'sceptre': return new Sceptre();
+        }
     }
 }
 

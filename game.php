@@ -8,11 +8,6 @@ require_once  'classes/Salle.php';
 require 'config.php';
 
 
-/*$coffre9 = null;
-$coffre1 = new Coffre();
-$coffre1->ouvrir($coffre9);
-
-var_dump($coffre1);*/
 
 $Jeu = $_SESSION['jeu'];
 
@@ -24,10 +19,10 @@ else {
     $monstre = $_SESSION['monstre'];
 }
 
-$x = 0;
+/*$x = 0;
 $y = 0;
 $Jeu->salle = new Salle($x,$y);
-$Jeu->salle->initDonjon($x, $y);
+$Jeu->salle->initDonjon($x, $y);*/
 
 $_SESSION['jeu'] = $Jeu;
 
@@ -40,10 +35,17 @@ $_SESSION['jeu'] = $Jeu;
 
 
 var_dump($_SESSION);
+$salle=0;
+Salle::initDonjon();
+Salle::SelecEmpty();
+Salle::Porte();
+$_SESSION['salle'] = serialize(Salle::$Tab_salle);
+//var_dump(Salle::$Tab_salle);
+//var_dump(Salle::$Empty);
+
 
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -70,14 +72,39 @@ var_dump($_SESSION);
 <button type="button" value="" class="btn btn-danger" onClick="window.open('profil.php')">Fiche personnage</button>
 
 
+
 <form method="post" action="combat.php">
     <input type="checkbox" name="attaquer" value="attaquer"> attaquer le monstre (reçevoir les dégats également)<br>
     <input type="checkbox" name="vehicle" value="Car" checked="checked"> On verra après<br>
     <input type="submit" value="Submit">
 
+
+
 </form>
 
+<?php
+// Boucle FOR Portes
+/*
+for ($i = 1; ; $i++) {
+    if ($i > $salle->porte) {
+        break;
+    }
+    echo '<button href="#" type="button" class="btn btn-info">Ouvrir porte ' . $i . '</button>';
+}
 
+*/?><!--
+
+<p>Gros loot sa mere</p>
+
+// Boucle FOR Coffres
+    --><?php
+/*    for ($i = 1; ; $i++) {
+        if ($i > $objet->coffre) {
+            break;
+        }
+        echo '<button href="#" type="button" class="btn btn-info">Ouvrir coffre ' . $i . '</button>';
+    }
+    */?>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -85,4 +112,3 @@ var_dump($_SESSION);
 <script src="js/bootstrap.min.js"></script>
 </body>
 </html>
-

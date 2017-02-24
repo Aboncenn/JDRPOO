@@ -1,4 +1,15 @@
+body{
+    font-family: Montserrat;
+}
+
 .stats{
     border: solid 2px #2b669a;
-    border-radius: 6%;
+    border-radius: 3%;
+
+}
+
+#liste1{
+    text-decoration: none;
+    list-style-type: none;
+
 }
