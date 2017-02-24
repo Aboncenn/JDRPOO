@@ -20,38 +20,37 @@
 <?php
 require_once 'classes/Personnage.php';
 require_once 'classes/Jeu.php';
+require_once 'classes/Objets.php';
 require_once  'classes/Monstre.php';
+require_once  'classes/Objets.php';
+require_once  'classes/Salle.php';
 require 'config.php';
 ?>
 
+
+<h1>Fiche personnage : </h1>
 
 <?php
 
 $perso = (isset($_POST['perso'])?$_POST['perso']:(isset($_SESSION['perso'])?$_SESSION['perso']:''));
 $Jeu = new Jeu();
 $Jeu->creation($perso);
-
-$stats = $_SESSION["personnage"];
-$inventaire = $_SESSION["Inventaire"]
+$Jeu = $_SESSION['jeu'];
 
 ?>
 
-<h1>Fiche personnage : </h1>
 
 <div class="stats col-md-4">
     <ul id="liste1">
-        <li><p> PV : <?php echo $stats->vie?></p></li>
-        <li><p> ATK : <?php echo $stats->atk?></p></li>
-        <li><p> MANA : <?php echo $stats->magie?></p></li>
-        <li><p> DEFENSE : <?php echo $stats->def ?></p></li>
+        <li><p> PV : <?php echo $Jeu->vie; ?></p></li>
+        <li><p> ATK : <?php echo $Jeu->atk; ?></p></li>
+        <li><p> MANA : <?php echo $Jeu->magie; ?></p></li>
+        <li><p> DEFENSE : <?php echo $Jeu->def; ?></p></li>
     </ul>
 </div>
 
 <div class="inventaire col-md-8">
     <div class="objets">
-        <ul>
-            <li><p>Arme : <?php echo $inventaire->arme?></p></li>
-        </ul>
 
     </div>
     <div class="popo">

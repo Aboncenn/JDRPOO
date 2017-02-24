@@ -42,8 +42,7 @@ class Coffre
 {
     public static $listeobjetspossibles = array('potion', 'rail de cocaine', 'épée', 'sceptre');
 
-    public function ouvrir()
-    {
+    public function ouvrir(){
         $nomobjet = array_rand(self::$listeobjetspossibles, 1);
 
         switch($nomobjet) {

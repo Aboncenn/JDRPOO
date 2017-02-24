@@ -46,7 +46,6 @@ if(isset($_GET['neighbor']) && $_GET['neighbor'] < count ($salle->neighbors)) {
 $_SESSION['salle']= $salle;
 $_SESSION['jeu'] = $Jeu;
 var_dump($salle);
-
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -61,12 +60,8 @@ var_dump($salle);
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet"/>
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
 <body>
 <button type="button" value="" class="btn btn-danger" onClick="window.open('profil.php')">Fiche personnage</button>
@@ -81,12 +76,7 @@ var_dump($salle);
     foreach ($salle->neighbors as $key => $neighbor) {
         echo '<a href="game.php?neighbor='.$key.'" class="btn btn-info">Ouvrir porte</a>';
     }
-?>
 
-<p>Gros loot sa mere</p>
-
-// Boucle FOR Coffres
-    <?php
     for ($i = 1; $i< (rand(0,2)) ; $i++) {
         if ($i > Coffre::$listeobjetspossibles) {
             echo '<button onClick="document.location.href=game.php" type="button" class="btn btn-info">Ouvrir coffre ' . $i . '</button>';
