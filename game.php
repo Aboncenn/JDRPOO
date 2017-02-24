@@ -18,6 +18,7 @@ if(!isset($_SESSION['salle'])) {
     Salle::Porte();
     $salle = Salle::$Tab_salle[1][1];
     $_SESSION['salles'] = serialize(Salle::$Tab_salle);
+    $direction = null;
 }
 else {
     $salle = $_SESSION['salle'];
@@ -41,11 +42,11 @@ if(isset($_GET['neighbor']) && $_GET['neighbor'] < count ($salle->neighbors)) {
         $direction = 'nord';
     else if($salle->y > $newsalle->y)
         $direction = 'sud';
+    else{ $direction = null; };
     $salle = $newsalle;
 }
 $_SESSION['salle']= $salle;
 $_SESSION['jeu'] = $Jeu;
-var_dump($salle);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -74,7 +75,8 @@ var_dump($salle);
 <?php
 // Boucle FOR Portes
     foreach ($salle->neighbors as $key => $neighbor) {
-        echo '<a href="game.php?neighbor='.$key.'" class="btn btn-info">Ouvrir porte</a>';
+        echo '<a href="game.php?neighbor='.$key.'" class="btn btn-info">Ouvrir porte '. $direction .'</a>';
+        var_dump($direction);
     }
 
     for ($i = 1; $i< (rand(0,2)) ; $i++) {

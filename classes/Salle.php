@@ -3,10 +3,10 @@
 Class Salle
 {
     public static $Empty = [];
-    public static $m = 3;
-    public static $n = 3;
+    public static $m = 8;
+    public static $n = 8;
     public static $Tab_salle = [];
-
+    public $salle_monstre =[];
     private function __construct($x, $y)
    {
         $this->x = $x;
@@ -24,7 +24,7 @@ Class Salle
     }
     public static function SelecEmpty()
     {
-        for ($i = 0; $i < 3;$i++){
+        for ($i = 0; $i < 5;$i++){
             $randx = 1;
             $randy = 1;
             while($randx == 1 && $randy == 1) {
@@ -82,4 +82,5 @@ Class Salle
         }
     }
 }
+
 ?>
