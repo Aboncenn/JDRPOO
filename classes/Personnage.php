@@ -20,6 +20,7 @@ class Personnage {
 
     /* FONCTIONS D'ACTION */
 
+
     public function attaque($cible){
         $stat=rand(1,100);
         if ($stat <= 5){

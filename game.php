@@ -11,6 +11,12 @@ $perso = isset($_POST['perso'])?$_POST['perso']:'';
 
 $Jeu = new Jeu();
 $Jeu->creation($perso);
+$x = 0;
+$y = 0;
+$salle = new Salle($x,$y);
+$salle->initDonjon($x, $y);
+$_SESSION['salle'] = $salle;
+var_dump($_SESSION);
 $coffre1 = new Coffre();
 $coffre1->coffre9;
 $coffre1->ouvrir($coffre9);
@@ -26,25 +32,18 @@ var_dump($coffre1);
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Fiche Personnage</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet"/>
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
 <body>
 
 <button type="button" value="" class="btn btn-danger" onClick="window.open('profil.php')">Fiche personnage</button>
-
-
 
 <?php
 
@@ -55,10 +54,6 @@ $y = 0;
 $salle = new Salle($x,$y);
 $salle->initDonjon($x, $y);
 $_SESSION['salle'] = $salle;
-
-
-
-
 
 $Jeu = new Jeu();
 $Jeu->creation($perso);
