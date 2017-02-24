@@ -7,11 +7,13 @@ Class Salle
     public static $n = 8;
     public static $Tab_salle = [];
     public $salle_monstre =[];
+    public $coffres;
     private function __construct($x, $y)
    {
         $this->x = $x;
         $this->y = $y;
         $this->neighbors = [];
+        $this->coffres = [];
    }
 
     public static function initDonjon()
@@ -81,6 +83,12 @@ Class Salle
             }
         }
     }
-}
+    public function Coffre(){
+        $nombrecoffre = rand(0,2);
+        for ($i = 0;$i < $nombrecoffre; $i++){
+            array_push($this->coffres, new Coffre());
+        }
+    }
 
+}
 ?>

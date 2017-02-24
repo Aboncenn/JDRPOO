@@ -10,7 +10,6 @@ $salle=0;
 $perso = isset($_POST['perso'])?$_POST['perso']:'';
 $Jeu = new Jeu();
 $Jeu->creation($perso);
-$coffre1 = new Coffre();
 $Jeu = $_SESSION['jeu'];
 if(!isset($_SESSION['salle'])) {
     Salle::initDonjon();
@@ -23,6 +22,7 @@ if(!isset($_SESSION['salle'])) {
 else {
     $salle = $_SESSION['salle'];
     $salles = $_SESSION['salles'];
+    $salle->Coffre();
 }
 if(!isset($_SESSION['monstre'])) {
     $monstre = new Monstre();
@@ -67,9 +67,9 @@ $_SESSION['jeu'] = $Jeu;
 <body>
 <button type="button" value="" class="btn btn-danger" onClick="window.open('profil.php')">Fiche personnage</button>
 <form method="post" action="combat.php">
-    <input type="checkbox" name="attaquer" value="attaquer"> attaquer le monstre (reçevoir les dégats également)<br>
-    <input type="checkbox" name="vehicle" value="Car" checked="checked"> On verra après<br>
-    <input type="submit" value="Submit">
+    <input type="radio" name="attaquer" value="attaquer"> attaquer le monstre (reçevoir les dégats également)<br>
+    <input type="radio" name="vehicle" value="Car" checked="checked"> On verra après<br>
+    <input class="btn btn-danger" type="submit" value="Valider son choix">
 </form>
 
 <?php
@@ -79,12 +79,19 @@ $_SESSION['jeu'] = $Jeu;
         var_dump($direction);
     }
 
-    for ($i = 1; $i< (rand(0,2)) ; $i++) {
-        if ($i > Coffre::$listeobjetspossibles) {
-            echo '<button onClick="document.location.href=game.php" type="button" class="btn btn-info">Ouvrir coffre ' . $i . '</button>';
-        }
-    }
-    ?>
+foreach ($salle->neighbors as $neighbor) {
+    echo '<button href="#" type="button" class="btn btn-info">Ouvrir porte</button>';
+}
+
+?>
+<br>
+<?php
+for ($i = 1; $i <= count($salle->coffres); $i++) {
+    echo '<button href="#" type="button" class="btn btn-info">Ouvrir coffre ' . $i . '</button>';
+}
+
+?>
+
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
