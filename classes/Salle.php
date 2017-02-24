@@ -9,13 +9,13 @@ Class Salle
     public static $Tab_salle = [];
 
     public function __construct($x, $y)
-    {
-        $this->x = $x;
+   {
+       $this->x = $x;
         $this->y = $y;
         $this->neighbors = [];
     }
 
-    public function initDonjon($x, $y)
+public function initDonjon($x, $y)
     {
         for ($i = 1; $i <= self::$m; $i++) {
             for ($j = 1; $j <= self::$n; $j++) {
