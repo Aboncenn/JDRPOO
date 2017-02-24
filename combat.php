@@ -6,13 +6,11 @@ require_once  'classes/Monstre.php';
 require_once  'classes/Objets.php';
 require_once  'classes/Salle.php';
 require 'config.php';
-
 $perso = isset($_POST['perso'])?$_POST['perso']:'';
 $choix = $_POST['attaquer'];
 $Jeu = $_SESSION['jeu'];
 $lastperso = $Jeu->personnage;
-$monstre = $_SESSION['monstre'];
-
+$monstre = $_SESSION['salle']->nombreMonstres;
 if($choix == 'attaquer') {
 
     $lastperso->attaque($monstre);
