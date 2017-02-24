@@ -11,11 +11,13 @@ $perso = isset($_POST['perso'])?$_POST['perso']:'';
 
 $Jeu = new Jeu();
 $Jeu->creation($perso);
-$coffre1 = new Coffre();
-$coffre1->coffre9;
-$coffre1->ouvrir($coffre9);
-)
-var_dump($coffre1);
+
+$x = 0;
+$y = 0;
+$salle = new Salle($x,$y);
+$salle->initDonjon($x, $y);
+$_SESSION['salle'] = $salle;
+var_dump($_SESSION);
 
 ?>
 
@@ -39,37 +41,8 @@ var_dump($coffre1);
 
 <button type="button" value="" class="btn btn-danger" onClick="window.open('profil.php')">Fiche personnage</button>
 
-<<<<<<< HEAD
-=======
 
 
-<?php
-
-$perso = isset($_POST['perso'])?$_POST['perso']:'';
-$x = 0;
-$y = 0;
-$salle = new Salle($x,$y);
-$salle->initDonjon($x, $y);
-$_SESSION['salle'] = $salle;
-
-
-
-
-
-$Jeu = new Jeu();
-$Jeu->creation($perso);
-
-$coffre1 = new Coffre();
-$coffre1->ouvrir($coffre);
-
-var_dump($_SESSION);
-var_dump($coffre1->coffre);
-
-
-?>
-
-
->>>>>>> 7759596d3682f298c7c1a60aedadcc1c0e85b289
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->

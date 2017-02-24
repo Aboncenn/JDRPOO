@@ -29,12 +29,13 @@ require 'config.php';
 
 <?php
 
-$perso = isset($_POST['perso'])?$_POST['perso']:'';
+$perso = (isset($_POST['perso'])?$_POST['perso']:(isset($_SESSION['perso'])?$_SESSION['perso']:''));
 $Jeu = new Jeu();
 $Jeu->creation($perso);
 
-
-var_dump($_SESSION);
+$stats = $_SESSION["personnage"];
+echo $stats->vie;
+var_dump($_SESSION["personnage"]);
 
 ?>
 
