@@ -17,7 +17,27 @@
 </head>
 <body>
 
+<?php
+require_once 'classes/Personnage.php';
+require_once 'classes/Jeu.php';
+require_once  'classes/Monstre.php';
+require 'config.php';
+?>
+
+
 <h1>Fiche personnage : </h1>
+
+<?php
+
+$perso = isset($_POST['perso'])?$_POST['perso']:'';
+$Jeu = new Jeu();
+$Jeu->creation($perso);
+
+
+var_dump($_SESSION);
+
+?>
+
 
 <div class="stats col-md-4">
 
