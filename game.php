@@ -70,10 +70,19 @@ var_dump($_SESSION);
 var_dump($coffre1->coffre);
 
 
-// Boucle FOR
+// Boucle FOR Portes
 
 for ($i = 1; ; $i++) {
     if ($i > $salle->porte) {
+        break;
+    }
+    echo '<button href="#" type="button" class="btn btn-info">Ouvrir porte ' . $i . '</button>';
+}
+
+// Boucle FOR Coffres
+
+for ($i = 1; ; $i++) {
+    if ($i > $salle->coffre) {
         break;
     }
     echo '<button href="#" type="button" class="btn btn-info">Ouvrir porte ' . $i . '</button>';
