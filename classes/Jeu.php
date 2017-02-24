@@ -1,9 +1,11 @@
 <?php
 
 
-class Jeu{
+class Jeu extends Personnage{
 
     public $personnage;
+    public $salle;
+
     public function creation($perso){
 
 
@@ -23,4 +25,6 @@ class Jeu{
         }
 
     }
+
+
 }

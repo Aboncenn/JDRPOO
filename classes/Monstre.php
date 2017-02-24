@@ -2,15 +2,15 @@
 
 class Monstre{
 
-    private $i;
-    private $nom;
-    private $vie;
-    private $atk;
-    private $def;
-    private $speed;
+    public $i;
+    public $nom = "monstre";
+    public $vie = 50;
+    public $atk = 15;
+    public $def;
+    public $speed;
 
 
-    private function generate_stat(){
+   /* public function generate_stat(){
         $this->i = rand(0,1);
 
         if ($this->i == 0){
@@ -26,7 +26,7 @@ class Monstre{
             $this->def = rand(20,30);
             $this->speed = rand(20,30);
         }
-    }
+    }*/
 
     /**
      * @return mixed
@@ -74,15 +74,8 @@ class Monstre{
         }
     }
 
-    protected function empecher_negatif(){
-        if ($this->vie <= 0) {
-            $this->vie = 0;
-        }
-    }
     public function attaque($cible){
         $cible->vie -= $this->atk;
-        $cible->empecher_negatif();
-
     }
 
 
