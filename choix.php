@@ -10,7 +10,8 @@ $perso = isset($_POST['perso'])?$_POST['perso']:'';
 $Jeu = new Jeu();
 $Jeu->creation($perso);
 
-$_SESSION['personnage'] = $Jeu->personnage;
+$_SESSION['jeu'] = $Jeu;
+
 
 var_dump($_SESSION);
 

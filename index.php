@@ -5,6 +5,8 @@ require_once 'classes/Jeu.php';
 require_once 'classes/Monstre.php';
 require 'config.php';
 
+session_destroy();
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
