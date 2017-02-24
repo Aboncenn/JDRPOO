@@ -87,7 +87,9 @@ foreach ($salle->neighbors as $neighbor) {
 <br>
 <?php
 for ($i = 1; $i <= count($salle->coffres); $i++) {
-    echo '<button href="#" type="button" class="btn btn-info">Ouvrir coffre ' . $i . '</button>';
+    ?>
+    <button onClick="window.open('ajoutObjet.php')" type="button" class="btn btn-info">Ouvrir coffre</button>
+<?php
 }
 
 ?>
