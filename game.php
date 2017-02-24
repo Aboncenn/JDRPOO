@@ -7,8 +7,11 @@ require_once  'classes/Objets.php';
 require_once  'classes/Salle.php';
 require 'config.php';
 
+if($state == "entree")
+    $salle = Salle::$Tab_salle[1][1];
+else
+    $salle = $_SESSION['salle'];
 $perso = isset($_POST['perso'])?$_POST['perso']:'';
-
 $Jeu = new Jeu();
 $Jeu->creation($perso);
 $coffre1 = new Coffre();
@@ -16,10 +19,9 @@ $salle=0;
 Salle::initDonjon();
 Salle::SelecEmpty();
 Salle::Porte();
-$_SESSION['salle'] = serialize(Salle::$Tab_salle);
+$_SESSION['salles'] = serialize(Salle::$Tab_salle);
 //var_dump(Salle::$Tab_salle);
-//var_dump(Salle::$Empty);
-var_dump(Coffre::$listeobjetspossibles);
+var_dump(Salle::$Tab_salle[1][1]->neighbors);
 
 ?>
 
@@ -50,10 +52,7 @@ var_dump(Coffre::$listeobjetspossibles);
 <?php
 // Boucle FOR Portes
 
-for ($i = 1; ; $i++) {
-    if ($i > $salle->porte) {
-        break;
-    }
+foreach ($salle->neighbors as $neighbor) {
     echo '<button href="#" type="button" class="btn btn-info">Ouvrir porte ' . $i . '</button>';
 }
 
@@ -63,8 +62,8 @@ for ($i = 1; ; $i++) {
 
 // Boucle FOR Coffres
     <?php
-    for ($i = 1; ; $i++) {
-        if ($i > $objet->coffre) {
+    for ($i = 1; $i< (rand(0,2)) ; $i++) {
+        if ($i > Coffre::$listeobjetspossibles) {
             break;
         }
         echo '<button href="#" type="button" class="btn btn-info">Ouvrir coffre ' . $i . '</button>';
