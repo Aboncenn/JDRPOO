@@ -17,9 +17,9 @@ Salle::initDonjon();
 Salle::SelecEmpty();
 Salle::Porte();
 $_SESSION['salle'] = serialize(Salle::$Tab_salle);
-//var_dump(Salle::$Tab_salle);
-//var_dump(Salle::$Empty);
-var_dump(Coffre::$listeobjetspossibles);
+var_dump(Salle::$Tab_salle);
+var_dump(Salle::$Empty);
+var_dump(Coffre::)
 
 ?>
 
