@@ -1,16 +1,20 @@
 <?php
-
-
-
 require_once 'classes/Personnage.php';
 require_once 'classes/Jeu.php';
 require_once  'classes/Monstre.php';
+require_once  'classes/Objets.php';
 require 'config.php';
 
 $perso = isset($_POST['perso'])?$_POST['perso']:'';
 
 $Jeu = new Jeu();
 $Jeu->creation($perso);
+$coffre1 = new Coffre();
+$coffre1->coffre9;
+$coffre1->ouvrir($coffre9);
+)
+var_dump($coffre1);
+
 ?>
 
 
@@ -37,28 +41,6 @@ $Jeu->creation($perso);
 <body>
 
 <button type="button" value="" class="btn btn-danger" onClick="window.open('profil.php')">Fiche personnage</button>
-
-
-
-<?php
-
-
-$perso = isset($_POST['perso'])?$_POST['perso']:'';
-
-$Jeu = new Jeu();
-$Jeu->creation($perso);
-
-$coffre1 = new Coffre();
-var_dump($coffre);
-
-$coffre1->ouvrir($coffre);
-
-var_dump($_SESSION);
-var_dump($coffre1->coffre);
-
-
-?>
-
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
