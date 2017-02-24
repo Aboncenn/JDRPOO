@@ -2,9 +2,10 @@
 
 class Inventaire{
 
-    public $inventaire;
+    public $inventaire = 0;
 
     public function ajout(){
+
 
 
     }
