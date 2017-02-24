@@ -3,7 +3,7 @@
 
 require_once 'classes/Personnage.php';
 require_once 'classes/Jeu.php';
-require_once 'config.php';
+require 'config.php';
 
 
 $perso = isset($_POST['perso'])?$_POST['perso']:'';

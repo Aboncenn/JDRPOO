@@ -2,62 +2,88 @@
 
 Class Salle
 {
-    public $Empty = [];
-    public $porte = 1;
+    public static $Empty = [];
     public static $m = 3;
     public static $n = 3;
     public static $Tab_salle = [];
 
-    public function __construct($x, $y)
+    public $x;
+    public $y;
+    public $neighbors;
+
+    private function __construct($x, $y)
    {
-       $this->x = $x;
+        $this->x = $x;
         $this->y = $y;
         $this->neighbors = [];
-    }
+   }
 
-public function initDonjon($x, $y)
+    public static function initDonjon()
     {
         for ($i = 1; $i <= self::$m; $i++) {
             for ($j = 1; $j <= self::$n; $j++) {
-                array_push(self::$Tab_salle, new Salle($x, $y));
+                self::$Tab_salle[$i][$j] = new Salle($i, $j);
             }
         }
     }
-    public function SelecEmpty($Tab_salle, &$Empty)
+    public static function SelecEmpty()
     {
-        $vide = array_rand($Tab_salle, 1);
-        array_push($Empty, $vide);
+        for ($i = 0; $i < 3;$i++){
+            $randx = 1;
+            $randy = 1;
+            while($randx == 1 && $randy == 1) {
+                $randx = rand(1, self::$m);
+                $randy = rand(1, self::$n);
+            }
+
+            array_push(self::$Empty, self::$Tab_salle[$randx][$randy]);
+        }
     }
-        public function Porte($m,$n)
-        {
-            $this->porte = 0;
-            for ($i = 1; $i <= self::$m; $i++) {
-                for ($j = 1; $j <= self::$n; $j++) {
-                    for ($i = 1; $i <= ($n + $m); $i++) {
-                        if (self::$Tab_salle < 0) {
-                            $this->porte = 0;
-                            array_push($this->neighbors,$Tab_salle);
-                            if(self::$Tab_salle->x > 1  ){
-                                $this->porte = 3;
-                                array_push($this->neighbors,$Tab_salle);
-                                if(self::$Tab_salle->y > 1  ){
-                                    $this->porte =3;
-                                    array_push($this->neighbors,$Tab_salle);
-                                    if($this->neighbors = 1  ){
-                                        $this->porte =3;
-                                        array_push($this->neighbors,$Tab_salle);
-                                    }
-                                }
-                            }
-                        }
-                        else {
-                            $this->porte = 4;
+
+    public static function isEmpty($salle) {
+        foreach(self::$Empty as $empty) {
+            if($salle == $empty)
+                return true;
+        }
+
+        return false;
+    }
+
+    public static function Porte()
+    {
+        for ($i = 1; $i <= self::$m; $i++) {
+            for ($j = 1; $j <= self::$n; $j++) {
+                for ($i = 1; $i <= (self::$n + self::$m); $i++) {
+                    if (isset(self::$Tab_salle[$i][$j]) && !self::isEmpty(self::$Tab_salle[$i][$j])) {
+                        $sallecourante = self::$Tab_salle[$i][$j];
+
+                        $sallecourante->porte = 0;
+
+                        if($sallecourante->x > 1 && !self::isEmpty(self::$Tab_salle[$i-1][$j])) {
+                            array_push($sallecourante->neighbors, self::$Tab_salle[$i-1][$j]);
                         }
 
+                        if($sallecourante->y > 1 && !self::isEmpty(self::$Tab_salle[$i][$j-1])) {
+                            array_push($sallecourante->neighbors, self::$Tab_salle[$i][$j-1]);
+                        }
+
+                        if($sallecourante->x < self::$m && !self::isEmpty(self::$Tab_salle[$i+1][$j])) {
+                            array_push($sallecourante->neighbors, self::$Tab_salle[$i+1][$j]);
+                        }
+
+                        if($sallecourante->y < self::$n && !self::isEmpty(self::$Tab_salle[$i][$j+1])) {
+                            array_push($sallecourante->neighbors, self::$Tab_salle[$i][$j+1]);
+                        }
+
+                        foreach($sallecourante->neighbors as $neighbor) {
+                            if(self::isEmpty($neighbor) && $sallecourante->porte > 0){
+                                $sallecourante->porte--;
+                            }
+                        }
                     }
                 }
             }
         }
-
+    }
 }
 ?>
