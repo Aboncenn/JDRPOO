@@ -27,7 +27,6 @@ class Monstre{
             $this->speed = rand(20,30);
         }
     }*/
-
     /**
      * @return mixed
      */
