@@ -86,7 +86,7 @@ Class Salle
         }
     }
     public function Coffre(){
-        $nombrecoffre = rand(0,3);
+        $nombrecoffre = rand(0,2);
         for ($i = 0;$i < $nombrecoffre; $i++){
             array_push($this->coffres, new Coffre());
         }
