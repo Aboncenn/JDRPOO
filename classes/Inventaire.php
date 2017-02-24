@@ -7,6 +7,7 @@ class Inventaire{
     public function ajout(){
 
 
+
     }
 
 }
