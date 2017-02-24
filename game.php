@@ -14,7 +14,7 @@ $Jeu->creation($perso);
 $coffre1 = new Coffre();
 $coffre1->coffre9;
 $coffre1->ouvrir($coffre9);
-)
+
 var_dump($coffre1);
 
 ?>
@@ -44,8 +44,6 @@ var_dump($coffre1);
 
 <button type="button" value="" class="btn btn-danger" onClick="window.open('profil.php')">Fiche personnage</button>
 
-<<<<<<< HEAD
-=======
 
 
 <?php
@@ -72,10 +70,19 @@ var_dump($_SESSION);
 var_dump($coffre1->coffre);
 
 
+// Boucle FOR
+
+for ($i = 1; ; $i++) {
+    if ($i > $salle->porte) {
+        break;
+    }
+    echo '<button href="#" type="button" class="btn btn-info">Ouvrir porte ' . $i . '</button>';
+}
+
+
 ?>
 
 
->>>>>>> 7759596d3682f298c7c1a60aedadcc1c0e85b289
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
