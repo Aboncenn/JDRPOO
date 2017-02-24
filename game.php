@@ -4,7 +4,9 @@
 
 require_once 'classes/Personnage.php';
 require_once 'classes/Jeu.php';
+require_once 'classes/Objets.php';
 require_once  'classes/Monstre.php';
+require_once  'classes/Salle.php';
 require 'config.php';
 
 $perso = isset($_POST['perso'])?$_POST['perso']:'';
@@ -44,13 +46,20 @@ $Jeu->creation($perso);
 
 
 $perso = isset($_POST['perso'])?$_POST['perso']:'';
+$x = 0;
+$y = 0;
+$salle = new Salle($x,$y);
+$salle->initDonjon($x, $y);
+$_SESSION['salle'] = $salle;
+
+
+
+
 
 $Jeu = new Jeu();
 $Jeu->creation($perso);
 
 $coffre1 = new Coffre();
-var_dump($coffre);
-
 $coffre1->ouvrir($coffre);
 
 var_dump($_SESSION);
