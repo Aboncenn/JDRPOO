@@ -74,7 +74,7 @@ Class Salle
                         foreach($sallecourante->neighbors as $neighbor) {
                             if(self::isEmpty($neighbor) && $sallecourante->porte > 0){
                                 $sallecourante->porte--;
-                            }
+                        }
                         }
                     }
                 }
