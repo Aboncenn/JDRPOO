@@ -59,6 +59,7 @@ $_SESSION['salle'] = $salle;
 $Jeu = new Jeu();
 $Jeu->creation($perso);
 
+
 $coffre1 = new Coffre();
 $coffre1->ouvrir($coffre);
 
