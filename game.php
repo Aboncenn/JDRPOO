@@ -10,7 +10,6 @@ $salle=0;
 $perso = isset($_POST['perso'])?$_POST['perso']:'';
 $Jeu = new Jeu();
 $Jeu->creation($perso);
-$coffre1 = new Coffre();
 $Jeu = $_SESSION['jeu'];
 if(!isset($_SESSION['salle'])) {
     Salle::initDonjon();
@@ -18,9 +17,11 @@ if(!isset($_SESSION['salle'])) {
     Salle::Porte();
     $salle = Salle::$Tab_salle[1][1];
     $_SESSION['salles'] = serialize(Salle::$Tab_salle);
+    $salle->Coffre();
 }
 else {
     $salle = $_SESSION['salle'];
+
 }
 
 if(!isset($_SESSION['monstre'])) {
@@ -31,7 +32,7 @@ else {
     $monstre = $_SESSION['monstre'];
 }
 $_SESSION['jeu'] = $Jeu;
-var_dump(Salle::$Tab_salle[1][1]->neighbors);
+//var_dump(Salle::$Tab_salle[1][1]->neighbors);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -60,28 +61,25 @@ var_dump(Salle::$Tab_salle[1][1]->neighbors);
 
 
 <form method="post" action="combat.php">
-    <input type="checkbox" name="attaquer" value="attaquer"> attaquer le monstre (reçevoir les dégats également)<br>
-    <input type="checkbox" name="vehicle" value="Car" checked="checked"> On verra après<br>
-    <input type="submit" value="Submit">
+    <input type="radio" name="attaquer" value="attaquer"> attaquer le monstre (reçevoir les dégats également)<br>
+    <input type="radio" name="vehicle" value="Car" checked="checked"> On verra après<br>
+    <input class="btn btn-danger" type="submit" value="Valider son choix">
 </form>
 
 <?php
 // Boucle FOR Portes
 foreach ($salle->neighbors as $neighbor) {
-    echo '<button href="#" type="button" class="btn btn-info">Ouvrir porte ' . $i . '</button>';
-};
+    echo '<button href="#" type="button" class="btn btn-info">Ouvrir porte</button>';
+}
+
 ?>
+<br>
+<?php
+for ($i = 1; $i <= count($salle->coffres); $i++) {
+    echo '<button href="#" type="button" class="btn btn-info">Ouvrir coffre ' . $i . '</button>';
+}
 
-<p>Gros loot sa mere</p>
-
-// Boucle FOR Coffres
-    <?php
-    for ($i = 1; $i< (rand(0,2)) ; $i++) {
-        if ($i > Coffre::$listeobjetspossibles) {
-            echo '<button href="#" type="button" class="btn btn-info">Ouvrir coffre ' . $i . '</button>';
-        }
-    }
-    ?>
+?>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->

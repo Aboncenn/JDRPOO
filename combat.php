@@ -23,11 +23,11 @@ if($choix == 'attaquer') {
     $lastperso->attaque($monstre);
 
     if ($monstre->vie > 0) {
-        echo "le monstre a " . $monstre->vie . " de vie";
+        echo "le monstre a " . $monstre->vie . " de vie ";
 
 
     } else {
-        echo "Le monstre est mort";
+        echo "Le monstre est mort ";
     }
 
     $monstre->attaque($lastperso);
