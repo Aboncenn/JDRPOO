@@ -7,6 +7,7 @@ require_once  'classes/Objets.php';
 require_once  'classes/Salle.php';
 require 'config.php';
 $salle=0;
+$direction=null;
 $perso = isset($_POST['perso'])?$_POST['perso']:'';
 $Jeu = new Jeu();
 $Jeu->creation($perso);
@@ -18,18 +19,14 @@ if(!isset($_SESSION['salle'])) {
     $salle = Salle::$Tab_salle[1][1];
     $_SESSION['salles'] = serialize(Salle::$Tab_salle);
     $direction = null;
+
 }
 else {
     $salle = $_SESSION['salle'];
     $salles = $_SESSION['salles'];
+    $salle->nombreMonstre();
     $salle->Coffre();
-}
-if(!isset($_SESSION['monstre'])) {
-    $monstre = new Monstre();
-    $_SESSION['monstre'] = $monstre;
-}
-else {
-    $monstre = $_SESSION['monstre'];
+    var_dump($salle->coffres);
 }
 if(isset($_GET['neighbor']) && $_GET['neighbor'] < count ($salle->neighbors)) {
     $newsalle = $salle->neighbors[$_GET['neighbor']];
@@ -60,15 +57,18 @@ $_SESSION['jeu'] = $Jeu;
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet"/>
-
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 </head>
 <body>
 <button type="button" value="" class="btn btn-danger" onClick="window.open('profil.php')">Fiche personnage</button>
+<?php
+//boucle monstre
+
+?>
 <form method="post" action="combat.php">
     <input type="radio" name="attaquer" value="attaquer"> attaquer le monstre (reçevoir les dégats également)<br>
-    <input type="radio" name="vehicle" value="Car" checked="checked"> On verra après<br>
+    <input type="radio" name="vehicle" value="Car" > On verra après<br>
     <input class="btn btn-danger" type="submit" value="Valider son choix">
 </form>
 
@@ -76,13 +76,7 @@ $_SESSION['jeu'] = $Jeu;
 // Boucle FOR Portes
     foreach ($salle->neighbors as $key => $neighbor) {
         echo '<a href="game.php?neighbor='.$key.'" class="btn btn-info">Ouvrir porte '. $direction .'</a>';
-        var_dump($direction);
     }
-
-foreach ($salle->neighbors as $neighbor) {
-    echo '<button href="#" type="button" class="btn btn-info">Ouvrir porte</button>';
-}
-
 ?>
 <br>
 <?php

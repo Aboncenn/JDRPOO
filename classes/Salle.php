@@ -6,14 +6,16 @@ Class Salle
     public static $m = 8;
     public static $n = 8;
     public static $Tab_salle = [];
-    public $salle_monstre =[];
     public $coffres;
+    public $nombreMonstres;
+
     private function __construct($x, $y)
    {
         $this->x = $x;
         $this->y = $y;
         $this->neighbors = [];
         $this->coffres = [];
+        $this->nombreMonstres = [];
    }
 
     public static function initDonjon()
@@ -84,11 +86,17 @@ Class Salle
         }
     }
     public function Coffre(){
-        $nombrecoffre = rand(0,2);
+        $nombrecoffre = rand(0,3);
         for ($i = 0;$i < $nombrecoffre; $i++){
             array_push($this->coffres, new Coffre());
         }
     }
 
+    public function nombreMonstre(){
+        $nombredemonstre = rand(0,2);
+        for ($i = 0;$i < $nombredemonstre; $i++){
+            array_push($this->nombreMonstres, new Monstre());
+        }
+    }
 }
 ?>
