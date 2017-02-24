@@ -21,9 +21,8 @@ if(!isset($_SESSION['salle'])) {
 }
 else {
     $salle = $_SESSION['salle'];
-
+    $salles = $_SESSION['salles'];
 }
-
 if(!isset($_SESSION['monstre'])) {
     $monstre = new Monstre();
     $_SESSION['monstre'] = $monstre;
@@ -31,8 +30,22 @@ if(!isset($_SESSION['monstre'])) {
 else {
     $monstre = $_SESSION['monstre'];
 }
+if(isset($_GET['neighbor']) && $_GET['neighbor'] < count ($salle->neighbors)) {
+    $newsalle = $salle->neighbors[$_GET['neighbor']];
+
+    if($salle->x > $newsalle->x)
+        $direction = 'west';
+    else if($salle->x < $newsalle->x)
+        $direction = 'east';
+    else if($salle->y > $newsalle->y)
+        $direction = 'nord';
+    else if($salle->y > $newsalle->y)
+        $direction = 'sud';
+    $salle = $newsalle;
+}
+$_SESSION['salle']= $salle;
 $_SESSION['jeu'] = $Jeu;
-//var_dump(Salle::$Tab_salle[1][1]->neighbors);
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -47,19 +60,11 @@ $_SESSION['jeu'] = $Jeu;
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet"/>
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
 <body>
-
 <button type="button" value="" class="btn btn-danger" onClick="window.open('profil.php')">Fiche personnage</button>
-
-
-
 <form method="post" action="combat.php">
     <input type="radio" name="attaquer" value="attaquer"> attaquer le monstre (reçevoir les dégats également)<br>
     <input type="radio" name="vehicle" value="Car" checked="checked"> On verra après<br>
@@ -68,6 +73,7 @@ $_SESSION['jeu'] = $Jeu;
 
 <?php
 // Boucle FOR Portes
+
 foreach ($salle->neighbors as $neighbor) {
     echo '<button href="#" type="button" class="btn btn-info">Ouvrir porte</button>';
 }
@@ -80,6 +86,7 @@ for ($i = 1; $i <= count($salle->coffres); $i++) {
 }
 
 ?>
+
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
